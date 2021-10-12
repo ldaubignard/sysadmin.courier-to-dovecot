@@ -13,9 +13,10 @@ $soap_uri = 'http://192.168.0.105:8080/remote/';
 
 //* Get all mail users
 $client = new SoapClient(null, array('location' => $soap_location,
-                                     'uri'      => $soap_uri,
-									 'trace' => 1,
-									 'exceptions' => 1));
+				     'uri' => $soap_uri,
+				     'trace' => 1,
+				     'stream_context'=> stream_context_create(array('ssl'=> array('verify_peer'=>false,'verify_peer_name'=>false)))
+));
 
 
 try {
